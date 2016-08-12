@@ -1,6 +1,13 @@
- $(document).ready(function () {
-           $("#jqxwindow").jqxWindow({
-			    width: '100%',
-			    height: '100%'
-			});
-        });
+ $(window).load(function () {
+	$("#Heyasf").jqxWindow({
+		width: '100%',
+		Height: '100%',
+		maxHeight: '100%',
+		maxWidth: '100%',
+		draggable: false,
+		resizable: false
+	});
+	 $('#Heyasf').on('close', function (event) {
+ 		window.close();
+ 	}); 
+});
