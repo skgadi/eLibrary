@@ -5,7 +5,13 @@
   "manifest_version": 2,
   "app": {
     "background": {
-      "scripts": ["scripts/background.js"]
+      "scripts": [
+        "scripts/background.js",
+        "scripts/jquery-1.11.1.min.js",
+        "scripts/jqwidgets/jqxcore.js",
+        "scripts/jqwidgets/jqxwindow.js",
+        "scripts/jqwidgets/jqxbuttons.js",
+        "scripts/my-script.js"]
     }
   },
   "icons": { "16": "images/icons/Icon-16.png", "32": "images/icons/Icon-32.png", "64": "images/icons/Icon-64.png", "120": "images/icons/Icon-120.png", "152": "images/icons/Icon-152.png", "512": "images/icons/iTunesArtwork.png", "1024": "images/icons/iTunesArtwork@2x.png" }

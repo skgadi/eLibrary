@@ -2,36 +2,27 @@
 
 <head>
 
-<title>Frameless Window</title>
+<title>eLibrary</title>
 
-<link rel="stylesheet" type="text/css" href="style.css" />
-<script src="titlebar.js"></script>
-<script src="frameless_window.js"></script>
+<link rel="stylesheet" type="text/css" href="my-style.css" />
+
+
+<link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
+<link rel="stylesheet" href="jqwidgets/styles/jqx.energyblue.css" type="text/css" />
+<script src="jquery-1.11.1.min.js"></script>
+<script src="jqwidgets/jqxcore.js"></script>
+<script src="jqwidgets/jqxwindow.js"></script>
+<script src="jqwidgets/jqxbuttons.js"></script>
+<script src="my-script.js"></script>
 
 </head>
 
 <body>
 
-<div id="content">
-
-<div id="inner-content">
-
-	Select the titlebar to enable:<br/>
-	<input type="checkbox" id="top-box">Top Titlebar
-	<br/>
-	<input type="checkbox" id="bottom-box">Bottom Titlebar
-	<br/>
-	<input type="checkbox" id="left-box">Left Titlebar
-	<br/>
-	<input type="checkbox" id="right-box">Right Titlebar
-	<br/>
-	<br/>
-	<button id="close-window-button">Close Window</button>
-
-</div>
-
+<div id='jqxwindow'>
+    <div>Header</div>
+    <div>Content</div>
 </div>
 
 </body>
-
 </html>
