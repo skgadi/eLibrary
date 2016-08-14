@@ -204,9 +204,9 @@ $(document).ready(function () {
 	console.log('GetTheme is already called');
 
 	console.log('Loaded successfully');
-	ClickToCloseNotification("Success!!!", "App loaded successfully.", 10);
-	showNotification();
-
+	//ClickToCloseNotification("Success!!!", "App loaded successfully.", 10);
+	BasicNoti_000("Success!!!", "App loaded successfully.");
+/*
 	function ClickToCloseNotification(title, body, timeout) {
 		if (Notification.permission !== "granted")
 			Notification.requestPermission();
@@ -225,29 +225,49 @@ $(document).ready(function () {
 			};
 		}
 	}
-
-	function showNotification() {
-		chrome.notifications.create('reminder', {
+*/
+	function BasicNoti_000(title, message) {
+		chrome.notifications.create('BasicNoti_000', {
 			type : 'basic',
 			iconUrl : '../images/icons/iTunesArtwork@2x.png',
-			title : 'Don\'t forget!',
-			message : 'You have 5 things to do. Wake up, dude!',
-			buttons : [{
+			title : title,
+			message : message,
+			/*buttons : [{
 					title : 'Close',
 					iconUrl : '../images/icons/iTunesArtwork@2x.png'
 				}, {
 					title : 'Restart',
 					iconUrl : '../images/icons/iTunesArtwork@2x.png'
 				}
-			]
-		}, function (notificationId) {
-			//chrome.notifications.clear(notificationId);
-		});
-		chrome.notifications.onClicked.addListener(function (notificationId) {
-			chrome.notifications.clear(notificationId);
-		});
+			]*/
+		}, function (notificationId) {});
 	}
 
+	function BasicNoti_001(title, message) {
+		chrome.notifications.create('BasicNoti_001', {
+			type : 'basic',
+			iconUrl : '../images/icons/iTunesArtwork@2x.png',
+			title : title,
+			message : message,
+			buttons : [{
+					title : 'Reload now',
+					iconUrl : '../images/fatcow/FatCow_Icons32x32/arrow_refresh.png'
+				}, {
+					title : 'Hide this notification',
+					iconUrl : '../images/fatcow/FatCow_Icons32x32/hide_slide.png'
+				}
+			]
+		}, function (notificationId) {});
+	}
+	chrome.notifications.onClicked.addListener(function (notificationId) {
+		chrome.notifications.clear(notificationId);
+	});
+	chrome.notifications.onButtonClicked.addListener(function (notificationId, buttonIndex) {
+		if ((notificationId == 'BasicNoti_001') && (buttonIndex == 0))
+			chrome.runtime.reload();
+		if ((notificationId == 'BasicNoti_001') && (buttonIndex == 1))
+			chrome.notifications.clear(notificationId);
+	});
 	function PutToSync(key, value) {
 		chrome.storage.sync.set({
 			'theme' : value
@@ -314,7 +334,7 @@ $(document).ready(function () {
 					'theme' : args.item.label
 				}, function () {
 					if (!chrome.runtime.error)
-						ClickToCloseNotification("Theme changed", "Theme is successfully changed. You need to restart the app to see the effect.", 5);
+						BasicNoti_001("Theme changed", "Theme is successfully changed. You need to restart the app to see the effect.");
 				});
 			}
 		});
