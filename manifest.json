@@ -8,7 +8,7 @@
 		"notifications",
 		"syncFileSystem",
 		"unlimitedStorage", {
-			"fileSystem" : ["requestFileSystem", "write", "retainEntries", "directory"]
+			"fileSystem" : ["write", "retainEntries", "directory"]
 		}
 	],
 	"app" : {

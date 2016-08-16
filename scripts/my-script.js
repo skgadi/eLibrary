@@ -318,27 +318,23 @@ function MakeGUI() {
 	console.log('GUI loaded successfully');
 	Operations();
 }
-function onInitFs(fs) {
-	console.log('Opened file system: ' + fs.name);
+
+function onFileSystemOpened(fs, isSyncable) {
+	console.log('Got FileSystem:' + fs.name);
 }
+
 function errorHandler() {
 	console.log('Opened file system: ' + fs.name);
 }
 
 function Operations() {
 	var size;
-	/*window.requestFileSystem = window.webkitRequestFileSystem;
-	window.requestFileSystem(window.PERSISTENT, size, onInitFs, errorHandler);*/
-
-	/*if (window.File && window.FileReader && window.FileList && window.Blob) {
-		console.log('Works');
-		window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-		window.requestFileSystem(window.PERSISTENT, 500*1024*1024*1024, onInitFs, errorHandler);
-	} else {
-		alert('File API is not supported by this browser');
-	}*/
-	
-	chrome.fileSystem.getVolumeList(function() {
-		
+	console.log('Obtaining syncable FileSystem...');
+	chrome.syncFileSystem.requestFileSystem(function (fs) {
+		if (chrome.runtime.lastError) {
+			console.log('requestFileSystem: ' + chrome.runtime.lastError.message);
+			return;
+		}
+		onFileSystemOpened(fs, true);
 	});
 }
